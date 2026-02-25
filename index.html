@@ -1329,7 +1329,8 @@
                 <img src="author.jpg" alt="Alberto Yépiz"
                     style="width:50px;height:50px;border-radius:50%;object-fit:cover;border:2px solid var(--glass-border);">
                 <p style="color:rgba(255,255,255,0.45);font-size:0.85rem;text-align:left;">Investigación realizada por
-                    <strong>Alberto Yépiz</strong><br>Universidad de Sonora · Maestría en Administración · 2025
+                    <strong>Alberto Yépiz</strong><br>Universidad de Sonora · Maestría en Administración y Experto
+                    edTech · 2025
                 </p>
             </div>
         </div>
@@ -1553,7 +1554,7 @@
 
         let currentLang = 'es';
 
-        window.setLang = function(lang) {
+        window.setLang = function (lang) {
             currentLang = lang;
             document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
             document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -1566,7 +1567,7 @@
         };
 
         // Restore saved language preference
-        (function() {
+        (function () {
             const saved = localStorage.getItem('jovenesstem-lang');
             if (saved && saved !== 'es') window.setLang(saved);
         })();
