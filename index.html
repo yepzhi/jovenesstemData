@@ -828,6 +828,33 @@
             opacity: 1;
             transform: translateX(0);
         }
+
+        /* ===== LANGUAGE SWITCHER ===== */
+        .lang-switcher {
+            display: flex;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+        }
+        .lang-btn {
+            padding: 5px 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-family: 'Outfit', sans-serif;
+            background: transparent;
+            color: rgba(255,255,255,0.4);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+        }
+        .lang-btn.active {
+            background: var(--glass-hover);
+            color: var(--cyan);
+        }
+        .lang-btn:hover {
+            color: rgba(255,255,255,0.8);
+        }
     </style>
 </head>
 
@@ -839,9 +866,15 @@
     <!-- NAV -->
     <nav>
         <div class="nav-brand"><img src="logo_small.png" alt="JóvenesSTEM"
-                style="height:28px;vertical-align:middle;margin-right:8px;">Estudio 2025</div>
+                style="height:28px;vertical-align:middle;margin-right:8px;"><span data-i18n="nav_title">Estudio 2025</span></div>
         <div class="nav-dots" id="navDots"></div>
-        <div class="slide-counter" id="slideCounter">1 / 10</div>
+        <div style="display:flex;align-items:center;gap:12px;">
+            <div class="lang-switcher" id="langSwitcher">
+                <button class="lang-btn active" data-lang="es" onclick="setLang('es')">🇲🇽 ES</button>
+                <button class="lang-btn" data-lang="en" onclick="setLang('en')">🇺🇸 EN</button>
+            </div>
+            <div class="slide-counter" id="slideCounter">1 / 10</div>
+        </div>
     </nav>
 
     <!-- NAV ARROWS -->
@@ -860,35 +893,32 @@
         <div class="hero-content">
             <img src="logo.png" alt="JóvenesSTEM"
                 style="height:60px;margin-bottom:24px;filter:drop-shadow(0 4px 20px rgba(0,0,0,0.5));">
-            <div class="hero-tag">Investigación · Hermosillo, Sonora · 2025</div>
+            <div class="hero-tag" data-i18n="hero_tag">Investigación · Hermosillo, Sonora · 2025</div>
             <h1 class="hero-title">
-                El futuro STEM de<br><span class="gradient-text">Sonora en números</span>
+                <span data-i18n="hero_title1">El futuro STEM de</span><br><span class="gradient-text" data-i18n="hero_title2">Sonora en números</span>
             </h1>
-            <p class="hero-sub">
-                Diagnóstico de competencias STEM en 400 estudiantes de nivel medio superior.
-                Los datos que justifican la necesidad del programa JóvenesSTEM.
-            </p>
+            <p class="hero-sub" data-i18n="hero_sub">Diagnóstico de competencias STEM en 400 estudiantes de nivel medio superior. Los datos que justifican la necesidad del programa JóvenesSTEM.</p>
             <div class="hero-stats">
                 <div class="hero-stat">
                     <div class="hero-stat-num count-up" data-target="400">0</div>
-                    <div class="hero-stat-label">Estudiantes</div>
+                    <div class="hero-stat-label" data-i18n="stat_students">Estudiantes</div>
                 </div>
                 <div class="hero-stat">
                     <div class="hero-stat-num count-up" data-target="8">0</div>
-                    <div class="hero-stat-label">Instituciones</div>
+                    <div class="hero-stat-label" data-i18n="stat_institutions">Instituciones</div>
                 </div>
                 <div class="hero-stat">
                     <div class="hero-stat-num count-up" data-target="78">0</div>
-                    <div class="hero-stat-label">Ítems evaluados</div>
+                    <div class="hero-stat-label" data-i18n="stat_items">Ítems evaluados</div>
                 </div>
                 <div class="hero-stat">
                     <div class="hero-stat-num count-up" data-target="3">0</div>
-                    <div class="hero-stat-label">Dimensiones STEM</div>
+                    <div class="hero-stat-label" data-i18n="stat_dimensions">Dimensiones STEM</div>
                 </div>
             </div>
         </div>
         <div class="scroll-hint" onclick="nextSlide()">
-            <span>Desliza para explorar</span>
+            <span data-i18n="scroll_hint">Desliza para explorar</span>
             <svg viewBox="0 0 24 24">
                 <path d="M12 16l-6-6h12z" />
             </svg>
@@ -899,30 +929,30 @@
     <section class="slide" data-slide="1">
         <div class="slide-accent" style="background:var(--pink);top:-100px;left:-100px;"></div>
         <div class="slide-inner">
-            <span class="section-tag tag-pink">El Problema Global</span>
-            <h2 class="section-title">La crisis STEM no es<br>solo de México</h2>
+            <span class="section-tag tag-pink" data-i18n="s2_tag">El Problema Global</span>
+            <h2 class="section-title" data-i18n="s2_title">La crisis STEM no es<br>solo de México</h2>
             <p class="section-desc">Incluso Estados Unidos — la economía más grande del mundo — enfrenta un déficit
                 masivo de talento STEM.</p>
             <div class="metrics-grid">
                 <div class="metric-card">
                     <div class="metric-icon" style="color:var(--red);">▲</div>
                     <div class="metric-value color-red count-up" data-target="2" data-suffix="M">0</div>
-                    <div class="metric-label">Posiciones STEM vacantes proyectadas para 2025 en EUA</div>
+                    <div class="metric-label" data-i18n="s2_m1">Posiciones STEM vacantes proyectadas para 2025 en EUA</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-icon" style="color:var(--orange);">◆</div>
                     <div class="metric-value color-orange count-up" data-target="411" data-suffix="K">0</div>
-                    <div class="metric-label">Docentes STEM sin certificación en EUA</div>
+                    <div class="metric-label" data-i18n="s2_m2">Docentes STEM sin certificación en EUA</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-icon" style="color:var(--pink);">●</div>
                     <div class="metric-value color-pink count-up" data-target="20" data-suffix="%">0</div>
-                    <div class="metric-label">Egresados de High School listos para carreras STEM</div>
+                    <div class="metric-label" data-i18n="s2_m3">Egresados de High School listos para carreras STEM</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-icon" style="color:var(--green);">◈</div>
                     <div class="metric-value color-green">2.2×</div>
-                    <div class="metric-label">Diferencia salarial STEM vs no-STEM ($101K vs $46K USD)</div>
+                    <div class="metric-label" data-i18n="s2_m4">Diferencia salarial STEM vs no-STEM ($101K vs $46K USD)</div>
                 </div>
             </div>
         </div>
@@ -932,31 +962,31 @@
     <section class="slide" data-slide="2">
         <div class="slide-accent" style="background:var(--blue);bottom:-100px;right:-100px;"></div>
         <div class="slide-inner">
-            <span class="section-tag tag-blue">PISA 2022</span>
-            <h2 class="section-title">México por debajo del mínimo</h2>
+            <span class="section-tag tag-blue" data-i18n="s3_tag">PISA 2022</span>
+            <h2 class="section-title" data-i18n="s3_title">México por debajo del mínimo</h2>
             <p class="section-desc">Los resultados PISA 2022 revelan brechas de más de 70 puntos con el promedio OCDE.
             </p>
             <div class="compare-bars">
                 <div class="compare-item">
-                    <div class="compare-label">México<br>Matemáticas</div>
+                    <div class="compare-label" data-i18n="s3_mx_math">México<br>Matemáticas</div>
                     <div class="compare-bar-track">
                         <div class="compare-bar-fill bar-pink" style="--target-width:56%">395 pts</div>
                     </div>
                 </div>
                 <div class="compare-item">
-                    <div class="compare-label">OCDE<br>Matemáticas</div>
+                    <div class="compare-label" data-i18n="s3_oecd_math">OCDE<br>Matemáticas</div>
                     <div class="compare-bar-track">
                         <div class="compare-bar-fill bar-cyan" style="--target-width:67%">472 pts</div>
                     </div>
                 </div>
                 <div class="compare-item">
-                    <div class="compare-label">México<br>Ciencias</div>
+                    <div class="compare-label" data-i18n="s3_mx_sci">México<br>Ciencias</div>
                     <div class="compare-bar-track">
                         <div class="compare-bar-fill bar-orange" style="--target-width:59%">415 pts</div>
                     </div>
                 </div>
                 <div class="compare-item">
-                    <div class="compare-label">OCDE<br>Ciencias</div>
+                    <div class="compare-label" data-i18n="s3_oecd_sci">OCDE<br>Ciencias</div>
                     <div class="compare-bar-track">
                         <div class="compare-bar-fill bar-green" style="--target-width:69%">485 pts</div>
                     </div>
@@ -973,7 +1003,7 @@
     <section class="slide" data-slide="3">
         <div class="slide-accent" style="background:var(--cyan);top:50%;left:-200px;"></div>
         <div class="slide-inner">
-            <span class="section-tag tag-cyan">Resultados Hermosillo</span>
+            <span class="section-tag tag-cyan" data-i18n="s4_tag">Resultados Hermosillo</span>
             <h2 class="section-title">Puntaje global STEM:<br><span style="color:var(--pink)">alarmantemente bajo</span>
             </h2>
             <div class="split">
@@ -993,7 +1023,7 @@
                         <div class="donut-center">
                             <div class="donut-center-value color-pink count-up" data-target="50.7" data-decimals="1"
                                 data-suffix="%">0</div>
-                            <div class="donut-center-label">Puntaje promedio</div>
+                            <div class="donut-center-label" data-i18n="s4_donut_label">Puntaje promedio</div>
                         </div>
                     </div>
                 </div>
@@ -1027,19 +1057,19 @@
     <section class="slide" data-slide="4">
         <div class="slide-accent" style="background:var(--purple);top:-100px;right:-100px;"></div>
         <div class="slide-inner">
-            <span class="section-tag tag-purple">Público vs. Privado</span>
-            <h2 class="section-title">La brecha que divide</h2>
-            <p class="section-desc" style="margin-bottom:10px;">Diferencias estadísticamente significativas (p<0.001)
+            <span class="section-tag tag-purple" data-i18n="s5_tag">Público vs. Privado</span>
+            <h2 class="section-title" data-i18n="s5_title">La brecha que divide</h2>
+            <p class="section-desc" style="margin-bottom:10px;">Diferencias estadísticamente significativas (99.9%)
                     entre sectores.</p>
                     <div class="compare-bars">
                         <div class="compare-item">
-                            <div class="compare-label">Público<br>Puntaje Global</div>
+                            <div class="compare-label" data-i18n="s5_pub">Público<br>Puntaje Global</div>
                             <div class="compare-bar-track">
                                 <div class="compare-bar-fill bar-pink" style="--target-width:45%">44.8 pts</div>
                             </div>
                         </div>
                         <div class="compare-item">
-                            <div class="compare-label">Privado<br>Puntaje Global</div>
+                            <div class="compare-label" data-i18n="s5_priv">Privado<br>Puntaje Global</div>
                             <div class="compare-bar-track">
                                 <div class="compare-bar-fill bar-cyan" style="--target-width:63%">62.5 pts</div>
                             </div>
@@ -1048,18 +1078,18 @@
                     <div class="metrics-grid" style="margin-top:40px;">
                         <div class="metric-card">
                             <div class="metric-icon" style="color:var(--pink);">◉</div>
-                            <div class="metric-value color-pink">p<0.001< /div>
-                                    <div class="metric-label">Significancia estadística de la diferencia</div>
+                            <div class="metric-value color-pink" data-i18n="s5_m1v">Certeza<br>total</div>
+                                    <div class="metric-label" data-i18n="s5_m1l">Los datos son concluyentes: la brecha es real</div>
                             </div>
                             <div class="metric-card">
                                 <div class="metric-icon" style="color:var(--cyan);">▲</div>
                                 <div class="metric-value color-cyan">+39%</div>
-                                <div class="metric-label">Ventaja del sector privado sobre el público</div>
+                                <div class="metric-label" data-i18n="s5_m2l">Ventaja del sector privado sobre el público</div>
                             </div>
                             <div class="metric-card">
                                 <div class="metric-icon" style="color:var(--orange);">◆</div>
-                                <div class="metric-value color-orange">d=0.85</div>
-                                <div class="metric-label">Tamaño del efecto (grande según Cohen)</div>
+                                <div class="metric-value color-orange">Alto</div>
+                                <div class="metric-label" data-i18n="s5_m3l">Impacto de la diferencia entre sectores</div>
                             </div>
                         </div>
                     </div>
@@ -1069,43 +1099,43 @@
     <section class="slide" data-slide="5">
         <div class="slide-accent" style="background:var(--green);bottom:-100px;left:-100px;"></div>
         <div class="slide-inner">
-            <span class="section-tag tag-green">Por Subsistema</span>
-            <h2 class="section-title">No todas las escuelas son iguales</h2>
+            <span class="section-tag tag-green" data-i18n="s6_tag">Por Subsistema</span>
+            <h2 class="section-title" data-i18n="s6_title">No todas las escuelas son iguales</h2>
             <p class="section-desc">Ranking por puntaje STEM promedio entre los 5 subsistemas evaluados.</p>
             <div class="compare-bars" style="margin-top:30px;">
                 <div class="compare-item">
-                    <div class="compare-label">Prep. Privadas</div>
+                    <div class="compare-label">Privadas</div>
                     <div class="compare-bar-track">
                         <div class="compare-bar-fill bar-cyan" style="--target-width:75%">62.5</div>
                     </div>
                 </div>
                 <div class="compare-item">
-                    <div class="compare-label">CBTIS</div>
+                    <div class="compare-label">Subsistema B</div>
                     <div class="compare-bar-track">
                         <div class="compare-bar-fill bar-green" style="--target-width:58%">50.2</div>
                     </div>
                 </div>
                 <div class="compare-item">
-                    <div class="compare-label">COBACH</div>
+                    <div class="compare-label">Subsistema C</div>
                     <div class="compare-bar-track">
                         <div class="compare-bar-fill bar-blue" style="--target-width:53%">46.1</div>
                     </div>
                 </div>
                 <div class="compare-item">
-                    <div class="compare-label">CECyTE</div>
+                    <div class="compare-label">Subsistema D</div>
                     <div class="compare-bar-track">
                         <div class="compare-bar-fill bar-orange" style="--target-width:48%">42.8</div>
                     </div>
                 </div>
                 <div class="compare-item">
-                    <div class="compare-label">CONALEP</div>
+                    <div class="compare-label">Subsistema E</div>
                     <div class="compare-bar-track">
                         <div class="compare-bar-fill bar-pink" style="--target-width:44%">39.5</div>
                     </div>
                 </div>
             </div>
             <div class="callout">
-                La diferencia entre el subsistema con mejor puntaje (Privadas: 62.5) y el más bajo (CONALEP: 39.5) es de
+                La diferencia entre el subsistema con mejor puntaje (62.5) y el más bajo (39.5) es de
                 <strong>23 puntos</strong> — una brecha inaceptable dentro de la misma ciudad.
             </div>
         </div>
@@ -1115,42 +1145,42 @@
     <section class="slide" data-slide="6">
         <div class="slide-accent" style="background:var(--orange);top:50%;right:-200px;"></div>
         <div class="slide-inner">
-            <span class="section-tag tag-orange">Factores Clave</span>
-            <h2 class="section-title">¿Qué predice el desempeño STEM?</h2>
+            <span class="section-tag tag-orange" data-i18n="s7_tag">Factores Clave</span>
+            <h2 class="section-title" data-i18n="s7_title">¿Qué predice el desempeño STEM?</h2>
             <p class="section-desc">Las correlaciones revelan qué factores impactan más.</p>
             <div class="metrics-grid">
                 <div class="metric-card">
                     <div class="metric-icon" style="color:var(--cyan);">◇</div>
-                    <div class="metric-value color-cyan">r=0.42</div>
-                    <div class="metric-label">Acceso a computadora<br>↔ Puntaje STEM</div>
+                    <div class="metric-value color-cyan">Moderada</div>
+                    <div class="metric-label" data-i18n="s7_m1l">Tener computadora mejora el puntaje STEM</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-icon" style="color:var(--blue);">○</div>
-                    <div class="metric-value color-blue">r=0.38</div>
-                    <div class="metric-label">Internet en casa<br>↔ Puntaje STEM</div>
+                    <div class="metric-value color-blue">Moderada</div>
+                    <div class="metric-label" data-i18n="s7_m2l">Internet en casa mejora el puntaje STEM</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-icon" style="color:var(--green);">◎</div>
-                    <div class="metric-value color-green">r=0.45</div>
-                    <div class="metric-label">Interés vocacional STEM<br>↔ Puntaje STEM</div>
+                    <div class="metric-value color-green">Fuerte</div>
+                    <div class="metric-label" data-i18n="s7_m3l">Interés en carreras STEM eleva el puntaje</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-icon" style="color:var(--pink);">□</div>
-                    <div class="metric-value color-pink">r=0.51</div>
-                    <div class="metric-label">Tipo de subsistema<br>↔ Puntaje STEM</div>
+                    <div class="metric-value color-pink">Fuerte</div>
+                    <div class="metric-label" data-i18n="s7_m4l">El tipo de escuela influye significativamente</div>
                 </div>
             </div>
             <div style="margin-top:40px;">
                 <h3 style="margin-bottom:16px;">Brecha de género</h3>
                 <div class="compare-bars">
                     <div class="compare-item">
-                        <div class="compare-label">Mujeres</div>
+                        <div class="compare-label" data-i18n="s7_f">Mujeres</div>
                         <div class="compare-bar-track">
                             <div class="compare-bar-fill bar-pink" style="--target-width:52%">49.7 pts</div>
                         </div>
                     </div>
                     <div class="compare-item">
-                        <div class="compare-label">Hombres</div>
+                        <div class="compare-label" data-i18n="s7_m">Hombres</div>
                         <div class="compare-bar-track">
                             <div class="compare-bar-fill bar-blue" style="--target-width:55%">52.4 pts</div>
                         </div>
@@ -1164,7 +1194,7 @@
     <section class="slide" data-slide="7">
         <div class="slide-accent" style="background:var(--cyan);top:-100px;left:50%;"></div>
         <div class="slide-inner">
-            <span class="section-tag tag-cyan">Verificación</span>
+            <span class="section-tag tag-cyan" data-i18n="s8_tag">Verificación</span>
             <h2 class="section-title">4 hipótesis. <span style="color:var(--green);">4 confirmadas.</span></h2>
             <div style="display:flex;flex-direction:column;gap:20px;margin-top:40px;">
                 <div class="glass-card" style="display:flex;align-items:center;gap:20px;">
@@ -1178,7 +1208,7 @@
                 <div class="glass-card" style="display:flex;align-items:center;gap:20px;">
                     <span style="font-size:2rem;color:var(--green);font-weight:800;">✓</span>
                     <div>
-                        <h4 style="margin-bottom:6px;color:var(--green);">H2 — Confirmada (p<0.001)< /h4>
+                        <h4 style="margin-bottom:6px;color:var(--green);">H2 — Confirmada (99.9%)</h4>
                                 <p style="color:rgba(255,255,255,0.65);">Diferencias significativas entre público y
                                     privado. El sector privado supera ampliamente al público.</p>
                     </div>
@@ -1186,7 +1216,7 @@
                 <div class="glass-card" style="display:flex;align-items:center;gap:20px;">
                     <span style="font-size:2rem;color:var(--green);font-weight:800;">✓</span>
                     <div>
-                        <h4 style="margin-bottom:6px;color:var(--green);">H3 — Confirmada (r>0.3)</h4>
+                        <h4 style="margin-bottom:6px;color:var(--green);">H3 — Confirmada (correlación significativa)</h4>
                         <p style="color:rgba(255,255,255,0.65);">El acceso a tecnología se correlaciona positivamente
                             con el desempeño STEM.</p>
                     </div>
@@ -1208,7 +1238,7 @@
         <div class="slide-accent" style="background:var(--pink);top:20%;right:-100px;width:500px;height:500px;"></div>
         <div class="slide-accent" style="background:var(--cyan);bottom:10%;left:-100px;width:400px;height:400px;"></div>
         <div class="slide-inner" style="text-align:center;">
-            <span class="section-tag tag-pink">La Solución</span>
+            <span class="section-tag tag-pink" data-i18n="s9_tag">La Solución</span>
             <h2 class="section-title" style="max-width:800px;margin:0 auto 24px;">
                 JóvenesSTEM:<br><span class="gradient-text"
                     style="background:linear-gradient(135deg,var(--cyan),var(--green),var(--pink));-webkit-background-clip:text;">El
@@ -1264,12 +1294,15 @@
                 <img src="portada.png" alt="BlueBook v1"
                     style="height:200px;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.5);">
             </div>
-            <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
-                <a href="https://yepzhi.com/jovenesstem" class="cta-btn" target="_blank">
+            <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+                <a href="https://yepzhi.com/jovenesstem" class="cta-btn" target="_blank" data-i18n="s10_cta1">
                     Conoce JóvenesSTEM →
                 </a>
-                <a href="https://yepzhi.com" class="cta-btn cta-btn-alt" target="_blank">
-                    Contacto →
+                <a href="https://yepzhi.com" class="cta-btn cta-btn-alt" target="_blank" data-i18n="s10_cta_author">
+                    Conoce al Autor →
+                </a>
+                <a href="estudio-stem-hermosillo-2025.pdf" class="cta-btn" style="background:linear-gradient(135deg,var(--blue),var(--purple));box-shadow:0 8px 32px rgba(43,134,197,0.3);" download data-i18n="s10_cta_download">
+                    Descarga este Estudio →
                 </a>
             </div>
             <div style="margin-top:40px;display:flex;align-items:center;justify-content:center;gap:16px;">
@@ -1283,8 +1316,7 @@
 
     <!-- FOOTER -->
     <footer>
-        <p>JóvenesSTEM © 2025 · Diseñado por <a href="https://yepzhi.com" target="_blank">yepzhi</a> · Datos del estudio
-            de tesis, Universidad de Sonora</p>
+        <p data-i18n="footer">JóvenesSTEM © 2025 · Diseñado por <a href="https://yepzhi.com" target="_blank">yepzhi</a> · Datos del estudio de tesis, Universidad de Sonora</p>
     </footer>
 
     <script>
