@@ -17,8 +17,8 @@
         :root {
             --pink: #FACC15;
             --blue: #007AFF;
-            --cyan: #5AC8FA;
-            --purple: #5856D6;
+            --cyan: #00F5D4;
+            --purple: #BF5AF2;
             --green: #34C759;
             --orange: #FF9500;
             --red: #FF3B30;
@@ -46,7 +46,7 @@
             overflow-x: hidden;
         }
 
-        /* Dynamic Background (EventSeeker Theme) */
+        /* Dynamic Background (Deep Space Cloud Theme) */
         body::before {
             content: '';
             position: fixed;
@@ -56,22 +56,24 @@
             pointer-events: none;
             z-index: -1;
             background:
-                radial-gradient(circle at 20% 50%, rgba(202, 138, 4, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(0, 122, 255, 0.1) 0%, transparent 50%);
-            animation: bg-pulse 8s ease-in-out infinite;
+                radial-gradient(ellipse at 15% 45%, rgba(0, 245, 212, 0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 85% 75%, rgba(191, 90, 242, 0.12) 0%, transparent 60%);
+            animation: bg-cloud 15s ease-in-out infinite alternate;
         }
 
-        @keyframes bg-pulse {
-
-            0%,
-            100% {
-                opacity: 0.5;
+        @keyframes bg-cloud {
+            0% {
+                transform: scale(1) translate(0, 0);
+                opacity: 0.6;
             }
 
-            50% {
+            100% {
+                transform: scale(1.1) translate(-2%, 2%);
                 opacity: 1;
             }
         }
+
+
 
         /* ===== PROGRESS BAR ===== */
         .progress-bar {
