@@ -15,18 +15,18 @@
         rel="stylesheet">
     <style>
         :root {
-            --pink: #FF3CAC;
-            --blue: #2B86C5;
-            --cyan: #00F5D4;
-            --purple: #784BA0;
-            --green: #00C853;
-            --orange: #FF6D00;
-            --red: #FF1744;
-            --dark: #0B0D17;
-            --dark2: #12152B;
-            --glass: rgba(255, 255, 255, 0.06);
-            --glass-border: rgba(255, 255, 255, 0.12);
-            --glass-hover: rgba(255, 255, 255, 0.1);
+            --pink: #FACC15;
+            --blue: #007AFF;
+            --cyan: #5AC8FA;
+            --purple: #5856D6;
+            --green: #34C759;
+            --orange: #FF9500;
+            --red: #FF3B30;
+            --dark: #121212;
+            --dark2: #1C1C1E;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-hover: rgba(255, 255, 255, 0.08);
         }
 
         * {
@@ -44,6 +44,33 @@
             background: var(--dark);
             color: #e8e8f0;
             overflow-x: hidden;
+        }
+
+        /* Dynamic Background (EventSeeker Theme) */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(202, 138, 4, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 122, 255, 0.1) 0%, transparent 50%);
+            animation: bg-pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes bg-pulse {
+
+            0%,
+            100% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         /* ===== PROGRESS BAR ===== */
@@ -126,13 +153,15 @@
             padding: 100px 60px 60px;
             position: relative;
             opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: scale(0.95) translateY(40px);
+            filter: blur(10px);
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1), filter 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .slide.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: scale(1) translateY(0);
+            filter: blur(0);
         }
 
         .slide-inner {
@@ -870,10 +899,6 @@
         <div class="nav-brand"><span data-i18n="nav_title">Reporte de Investigación Educación Superior</span></div>
         <div class="nav-dots" id="navDots"></div>
         <div style="display:flex;align-items:center;gap:12px;">
-            <div class="lang-switcher" id="langSwitcher">
-                <button class="lang-btn active" data-lang="es" onclick="setLang('es')">🇲🇽 ES</button>
-                <button class="lang-btn" data-lang="en" onclick="setLang('en')">🇺🇸 EN</button>
-            </div>
             <div class="slide-counter" id="slideCounter">1 / 10</div>
         </div>
     </nav>
@@ -1667,7 +1692,6 @@
 
         window.setLang = function (lang) {
             currentLang = lang;
-            document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.dataset.i18n;
                 if (translations[lang] && translations[lang][key] !== undefined) {
@@ -1677,11 +1701,8 @@
             localStorage.setItem('jovenesstem-lang', lang);
         };
 
-        // Restore saved language preference
-        (function () {
-            const saved = localStorage.getItem('jovenesstem-lang');
-            if (saved && saved !== 'es') window.setLang(saved);
-        })();
+        // Initialize immediately to ensure 'es' text shows
+        window.setLang('es');
     </script>
 </body>
 
